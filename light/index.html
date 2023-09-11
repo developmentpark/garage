@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+      }
+      .wire {
+        height: 2px;
+        width: 100%;
+        background-color: rgb(150, 148, 148);
+      }
+      .light-list {
+        display: flex;
+        width: 100%;
+      }
+      .light:nth-of-type(even) {
+        width: 20px;
+        height: 30px;
+        margin: auto;
+        border-radius: 50%;
+        animation: even-flash 600ms ease infinite;
+      }
+      .light:nth-of-type(odd) {
+        width: 20px;
+        height: 30px;
+        margin: auto;
+        border-radius: 50%;
+        animation: odd-flash 600ms both infinite;
+      }
+      @keyframes odd-flash {
+        0%,
+        100% {
+          background-color: rgba(91, 235, 34, 0.5);
+          box-shadow: 0px 2px 20px rgb(91, 235, 34, 1);
+        }
+        50% {
+          background-color: rgb(91, 235, 34, 1);
+          box-shadow: 0px 2px 40px 4px rgb(91, 235, 34, 1);
+        }
+      }
+      @keyframes even-flash {
+        0%,
+        100% {
+          background-color: rgb(255, 224, 46, 1);
+          box-shadow: 0px 2px 40px 4px rgb(255, 224, 46, 1);
+        }
+        50% {
+          background-color: rgb(255, 224, 46, 0.5);
+          box-shadow: 0px 2px 20px rgb(255, 224, 46, 1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <div class="wire"></div>
+      <div class="light-list">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+    </main>
+  </body>
+</html>

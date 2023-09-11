@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* transform: rotateZ() translateY() scale(); sequence */
+      /* transition: property1 duration, property2 duration */
+      /* @keyframes drive {
+        from {...}
+        to {...}
+      } */
+      /* animation-fill-mode: forwards | backwards | both; with which frame the animation ends; with the first "forwards" or the last "backward" */
+      /* animation-iteration: infinite; */
+      /* animation-direction: reverse; from "to" to "from" */
+      /* animation-tming-function: ease-in accelerated at start; ease-out acceleratedat end; ease-in-out; cubic-bezier(,,,) cubic-bezier.com shows in the TIME-ACCELERATION plane */
+      /* @keyframes jump { slow rise and fast fall effect due to gravity
+        0% {top: 0px}
+        70% {top: 50px}
+        100% {top: 0px}
+      } */
+      /* transform-origin: 0px 0px; origin point for rotation. */
+    </style>
+    <style>
+      .container {
+        font-family: Arial, Helvetica, sans-serif;
+        position: relative;
+      }
+      .box {
+        width: 400px;
+        height: 200px;
+        background-color: antiquewhite;
+        color: rgb(80, 80, 80);
+        margin: 200px auto;
+        text-align: center;
+        padding: 2rem 0;
+        position: relative;
+        top: -500px;
+        animation: drop 500ms ease-out forwards, swing 2s 2s ease forwards;
+        transform-origin: 0px 0px;
+      }
+
+      @keyframes swing {
+        0% {
+        }
+        40% {
+          transform: rotateZ(90deg);
+        }
+        70% {
+          transform: rotateZ(60deg);
+        }
+        90% {
+          transform: rotateZ(70deg);
+        }
+        100% {
+          transform: rotateZ(65deg);
+        }
+      }
+
+      @keyframes drop {
+        0% {
+        }
+        70% {
+          top: 150px;
+        }
+        100% {
+          top: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <div class="box">
+        <h1>Hello World</h1>
+      </div>
+    </main>
+  </body>
+</html>
