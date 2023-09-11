@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --spinner-width: 40px;
+        --spinner-height: 40px;
+        --spinner-color: black;
+        --spinner-border-width: 12px;
+      }
+      .spinner {
+        width: var(--spinner-width);
+        height: var(--spinner-height);
+        border: solid var(--spinner-border-width) var(--spinner-color);
+        border-right-color: transparent;
+        border-radius: 100%;
+        animation: spinner-spin 600ms linear infinite;
+      }
+
+      @keyframes spinner-spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="spinner"></div>
+    </main>
+  </body>
+</html>
