@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --primary-color: rgb(250, 96, 68);
+        --secondary-color: rgb(37, 37, 85);
+        --white-color: rgb(255, 242, 218);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .main {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .clock {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background-color: var(--white-color);
+        position: relative;
+        border: solid 10px var(--secondary-color);
+      }
+      .clock__number {
+        position: absolute;
+        inset: 18px;
+        text-align: center;
+        transform: rotateZ(calc(var(--i) * (360deg / 12)));
+      }
+      .clock__number-value {
+        color: var(--secondary-color);
+        font-size: 20px;
+        font-weight: 900;
+        display: inline-block;
+        transform: rotateZ(calc(var(--i) * (-360deg / 12)));
+      }
+      .clock__hand-list {
+        width: 10px;
+        height: 10px;
+        background-color: transparent;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        top: -3px;
+      }
+      .clock__hand-list::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: var(--secondary-color);
+        border-radius: 50%;
+        position: absolute;
+        border: solid 4px var(--primary-color);
+        z-index: 10;
+      }
+      .clock__hand {
+        bottom: 0px;
+        position: absolute;
+        transform-origin: bottom;
+        border-radius: 50%;
+      }
+      .clock__hand_hour {
+        width: 8px;
+        height: 100px;
+        background-color: var(--secondary-color);
+        animation: clockwiseRotation calc(60s * 60 * 12) linear forwards
+          infinite;
+      }
+      .clock__hand_minute {
+        width: 6px;
+        height: 140px;
+        background-color: var(--secondary-color);
+        animation: clockwiseRotation calc(60s * 60) linear forwards infinite;
+      }
+      .clock__hand_second {
+        width: 5px;
+        height: 160px;
+        background-color: var(--primary-color);
+        animation: clockwiseRotation 60s linear forwards infinite;
+      }
+      @keyframes clockwiseRotation {
+        to {
+          transform: rotateZ(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main">
+      <div class="clock">
+        <div style="--i: 1" class="clock__number">
+          <span class="clock__number-value">1</span>
+        </div>
+        <div style="--i: 2" class="clock__number">
+          <span class="clock__number-value">2</span>
+        </div>
+        <div style="--i: 3" class="clock__number">
+          <span class="clock__number-value">3</span>
+        </div>
+        <div style="--i: 4" class="clock__number">
+          <span class="clock__number-value">4</span>
+        </div>
+        <div style="--i: 5" class="clock__number">
+          <span class="clock__number-value">5</span>
+        </div>
+        <div style="--i: 6" class="clock__number">
+          <span class="clock__number-value">6</span>
+        </div>
+        <div style="--i: 7" class="clock__number">
+          <span class="clock__number-value">7</span>
+        </div>
+        <div style="--i: 8" class="clock__number">
+          <span class="clock__number-value">8</span>
+        </div>
+        <div style="--i: 9" class="clock__number">
+          <span class="clock__number-value">9</span>
+        </div>
+        <div style="--i: 10" class="clock__number">
+          <span class="clock__number-value">10</span>
+        </div>
+        <div style="--i: 11" class="clock__number">
+          <span class="clock__number-value">11</span>
+        </div>
+        <div style="--i: 12" class="clock__number">
+          <span class="clock__number-value">12</span>
+        </div>
+        <div class="clock__hand-list">
+          <div class="clock__hand clock__hand_hour"></div>
+          <div class="clock__hand clock__hand_minute"></div>
+          <div class="clock__hand clock__hand_second"></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
