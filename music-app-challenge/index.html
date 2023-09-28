@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --gray-color-1: #2d2e40;
+        --gray-color-2: #37394a;
+        --gray-color-3: #5f6172;
+        --gray-color-4: #9a9ea4;
+        --gray-color-5: #ececec;
+
+        --green-color: #47eac7;
+        --orange-color: #ec8147;
+
+        --primary-color-1: #7996ff;
+        --primary-color-2: #bd92fc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      main {
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--gray-color-1);
+      }
+
+      .banner {
+        background-color: var(--gray-color-2);
+        color: var(--gray-color-5);
+        width: 300px;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.8rem;
+        margin: 2rem auto;
+      }
+
+      .banner__logo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--gray-color-5);
+      }
+
+      .banner__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+      }
+
+      .banner__title {
+        font-size: 16px;
+        letter-spacing: 0.2px;
+      }
+
+      .banner__description {
+        text-align: center;
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      .banner .button {
+        transition: transform 200ms ease;
+      }
+
+      .button {
+        background-color: var(--primary-color-2);
+        color: var(--gray-color-5);
+        border: none;
+        border-radius: 4px;
+        width: 130px;
+        height: 30px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .button_small {
+        width: 60px;
+        height: 25px;
+      }
+
+      .button:hover {
+        cursor: pointer;
+        background-color: var(--primary-color-1);
+        transform: translate(0px, -4px);
+        box-shadow: 0 8px 6px var(--gray-color-1);
+      }
+
+      .button_secoundary {
+        width: fit-content;
+        background-color: transparent;
+        font-weight: normal;
+      }
+      .button_secoundary:hover {
+        background-color: transparent;
+        text-decoration: underline;
+        box-shadow: none;
+        transform: none;
+      }
+
+      .candidates-list {
+        background-color: var(--gray-color-2);
+        color: var(--gray-color-5);
+        width: 400px;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.6rem 0;
+        position: absolute;
+        top: -320px;
+        left: calc(50vw - 200px);
+        opacity: 0;
+        transition: opacity 500ms, top 200ms ease-in;
+        pointer-events: none;
+      }
+
+      .candidates-list.open {
+        opacity: 1;
+        top: 2rem;
+        pointer-events: auto;
+      }
+
+      .candidates-list__title {
+        font-size: 16px;
+        letter-spacing: 0.2px;
+      }
+
+      .candidates-list__counter {
+        color: var(--gray-color-4);
+        font-size: 12px;
+      }
+
+      .candidates-list__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;
+      }
+
+      .candidates-list__items {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+      }
+      .candidates-list__item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        padding: 0.8rem 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .candidates-list__item .button_small {
+        opacity: 0;
+        transition: opacity 200ms ease-in, transform 300ms ease;
+      }
+      .candidates-list__item:hover .button_small {
+        opacity: 1;
+      }
+
+      /* .candidates-list__item:hover {
+        background-color: var(--gray-color-1);
+      } */
+
+      .candidates-list__item-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.34rem;
+      }
+
+      .candidates-list__item-header {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+      }
+      .tag {
+        background-color: var(--green-color);
+        color: var(--gray-color-1);
+        font-weight: 600;
+        border-radius: 14px;
+        padding: 0.2rem 0.4rem;
+        font-size: 12px;
+      }
+      .tag_new {
+        background-color: var(--green-color);
+      }
+      .tag_closed {
+        background-color: var(--orange-color);
+      }
+
+      .candidates-list__item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 0px;
+        z-index: -1;
+        background-color: transparent;
+        transition: background 1s ease, height 200ms ease;
+      }
+
+      .candidates-list__item:hover::before {
+        height: 100%;
+        background-color: var(--gray-color-1);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="banner">
+        <div class="banner__content">
+          <div class="banner__logo"></div>
+          <div class="banner__title">Music app chanllenge</div>
+          <div class="banner__description">
+            Vote for you favorite community uploads created for our latest
+            challenge
+          </div>
+        </div>
+        <button class="open-candidates-btn button">Vote Now!</button>
+      </div>
+
+      <div class="candidates-list">
+        <div class="candidates-list__header">
+          <div class="candidates-list__title">Ongoing challenges</div>
+          <button class="button button_secoundary">View All</button>
+        </div>
+        <div class="candidates-list__items">
+          <div class="candidates-list__item">
+            <div class="candidates-list__item-content">
+              <div class="candidates-list__item-header">
+                <div class="candidates-list__item-title">
+                  Dating App Challenge
+                </div>
+                <div class="tag tag_new">New</div>
+              </div>
+              <div class="candidates-list__counter">36 submissions</div>
+            </div>
+            <button class="button button_small">Vote</button>
+          </div>
+          <div class="candidates-list__item">
+            <div class="candidates-list__item-content">
+              <div class="candidates-list__item-header">
+                <div class="candidates-list__item-title">
+                  Dashboard Challenge
+                </div>
+                <div class="tag tag_new">New</div>
+              </div>
+              <div class="candidates-list__counter">158 submissions</div>
+            </div>
+            <button class="button button_small">Vote</button>
+          </div>
+          <div class="candidates-list__item">
+            <div class="candidates-list__item-content">
+              <div class="candidates-list__item-header">
+                <div class="candidates-list__item-title">
+                  Facebook Redesign Challenge
+                </div>
+                <div class="tag tag_new">New</div>
+              </div>
+              <div class="candidates-list__counter">84 submissions</div>
+            </div>
+            <button class="button button_small">Vote</button>
+          </div>
+          <div class="candidates-list__item">
+            <div class="candidates-list__item-content">
+              <div class="candidates-list__item-header">
+                <div class="candidates-list__item-title">
+                  Slack Rebranding Challenge
+                </div>
+                <div class="tag tag_closed">Closed</div>
+              </div>
+              <div class="candidates-list__counter">247 submissions</div>
+            </div>
+            <button class="button button_small">Vote</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function openCandidatesList() {
+        const box = document.querySelector(".candidates-list");
+        box.classList.add("open");
+      }
+      const openCandidatesBtn = document.querySelector(".open-candidates-btn");
+      openCandidatesBtn.addEventListener("click", openCandidatesList);
+    </script>
+  </body>
+</html>
