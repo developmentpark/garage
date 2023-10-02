@@ -4,6 +4,224 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --secoundary-color_1: #130337;
+        --secoundary-color_2: #17084b;
+        --secoundary-color_3: #1d0e52;
+        --secoundary-color_4: #403385;
+        --secoundary-color_5: #836fd0;
+        --primary-color: #de15ef;
+        --primary-color-2: #e039f0;
+        --white-color: #e2e2e2;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        user-select: none;
+      }
+
+      main {
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--secoundary-color_1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .book {
+        display: flex;
+        width: fit-content;
+      }
+
+      .calendar {
+        background-color: var(--secoundary-color_3);
+        color: var(--white-color);
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+      }
+
+      .calendar__header {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+      }
+
+      .calendar__month {
+        font-size: 14px;
+      }
+
+      .calendar__year {
+        font-size: 12px;
+      }
+
+      .calendar__year::before {
+        content: ", ";
+        font-size: 14px;
+      }
+
+      .calendar__control {
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        border: solid 1px var(--white-color);
+        text-align: center;
+        font-size: 14px;
+        font-weight: 600;
+        transition: transform 200ms ease-out;
+      }
+
+      .calendar__control:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+
+      .calendar__control_prev {
+        margin-right: 0.6rem;
+      }
+
+      .calendar__control_next {
+        margin-left: 0.6rem;
+      }
+
+      .calendar__body {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .calendar__day-container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+      }
+
+      .calendar__day-name {
+        padding-bottom: 0.5rem;
+        font-size: 16px;
+        font-weight: 300;
+      }
+
+      .calendar__day-number {
+        padding: 0.5rem 0;
+        font-size: 16px;
+        font-weight: 200;
+      }
+
+      .calendar__day-number:hover {
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        width: 30px;
+        height: 30px;
+        padding-top: 5px;
+        margin: auto;
+        text-align: center;
+        box-shadow: 1px 1px 10px 1px var(--primary-color-2);
+        font-weight: 400;
+      }
+
+      .first-day {
+        grid-column: 4;
+      }
+
+      .calendar__ .event {
+        background-color: var(--secoundary-color_2);
+      }
+
+      .selector {
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        width: 30px;
+        height: 30px;
+        padding-top: 5px;
+        margin: auto;
+        text-align: center;
+        box-shadow: 1px 1px 10px 1px var(--primary-color-2);
+        font-weight: 400;
+      }
+
+      .event {
+        background-color: var(--secoundary-color_2);
+        color: var(--white-color);
+        padding: 1rem;
+        width: 200px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .event__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.1rem;
+        font-size: 14px;
+      }
+
+      .event__moth-day-container {
+        display: flex;
+      }
+
+      .event__body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .event__icon {
+        font-size: 4rem;
+        fill: var(--secoundary-color_4);
+      }
+
+      .event__description {
+        color: var(--secoundary-color_5);
+        font-size: 12px;
+        font-weight: 400;
+      }
+
+      .event__footer {
+        display: flex;
+        justify-content: center;
+      }
+
+      .button {
+        border: none;
+        width: 120px;
+        height: 25px;
+        font-size: 12px;
+        border-radius: 10px;
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        box-shadow: 0px 2px 10px 1px var(--primary-color-2);
+        transition: transform 200ms ease;
+        font-weight: 400;
+      }
+
+      .button:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        font-weight: 400;
+      }
+    </style>
   </head>
   <body>
     <main>
