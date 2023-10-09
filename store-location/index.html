@@ -4,6 +4,246 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      :root {
+        --primary-color_1: #746cff;
+        --primary-color_2: #5344d4;
+        --red-color: #ff61b2;
+        --green-color: #19c0a3;
+
+        --gray-color_1: #121128;
+        --gray-color_2: #1d1a38;
+
+        --white-color_1: #f7f5ff;
+        --white-color_2: #a896ee;
+        --white-color_3: #7573a8;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        user-select: none;
+      }
+
+      main {
+        background-color: var(--gray-color_2);
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      input {
+        background-color: var(--gray-color_1);
+        border: solid 1px var(--white-color_3);
+        font-size: 16px;
+        font-weight: 900;
+        color: var(--white-color_2);
+        padding: 0 1rem;
+      }
+
+      .store-card::before {
+        content: "";
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        z-index: -1;
+        top: -4rem;
+        left: -4rem;
+        border-top-right-radius: 50px;
+        border-bottom-left-radius: 50px;
+        background: linear-gradient(
+              45deg,
+              hsla(294, 75%, 66%, 1) 0%,
+              rgba(225, 5, 34, 0) 70%
+            )
+            repeat scroll 0% 0%,
+          linear-gradient(
+              135deg,
+              hsla(394, 75%, 66%, 1) 10%,
+              rgba(49, 5, 209, 0) 80%
+            )
+            repeat scroll 0% 0%,
+          linear-gradient(
+              225deg,
+              hsla(179, 81%, 45%, 1) 10%,
+              rgba(10, 219, 216, 0) 80%
+            )
+            repeat scroll 0% 0%,
+          rgba(0, 0, 0, 0)
+            linear-gradient(
+              315deg,
+              rgb(189, 5, 245) 100%,
+              rgba(9, 245, 5, 0) 70%
+            )
+            repeat scroll 0% 0%;
+      }
+
+      .store-card {
+        background-color: var(--gray-color_1);
+        border-radius: 10px;
+        width: 400px;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+        position: relative;
+      }
+
+      .store-card__header {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .store-card__title {
+        color: var(--white-color_2);
+        font-size: 20px;
+        font-weight: 900;
+      }
+
+      /* SEARCH BOX */
+      .search-box {
+        width: 100%;
+      }
+
+      .search-box__form {
+        color: var(--white-color_2);
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .search-box__options {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .search-box__zipcode-input {
+        max-width: 150px;
+        height: 40px;
+      }
+
+      .search-box__zipcode-label {
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      /* STORE LIST */
+      .store-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+      }
+
+      .store {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        gap: 0.6rem;
+      }
+
+      .tag {
+        position: absolute;
+        right: 0;
+        color: var(--white-color_1);
+        font-size: 12px;
+        font-weight: 900;
+        border-radius: 10px;
+        padding: 0.2rem 0.4rem;
+      }
+
+      .tag_closed {
+        background-color: var(--red-color);
+      }
+
+      .tag_opened {
+        background-color: var(--green-color);
+      }
+
+      .store__title {
+        font-size: 16px;
+        font-weight: 900;
+        color: var(--white-color_2);
+      }
+
+      .store__address {
+        font-size: 16px;
+        color: var(--white-color_3);
+      }
+
+      .store__date-container {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .store__date {
+        font-size: 16px;
+        color: var(--white-color_3);
+      }
+
+      .button {
+        border: none;
+        background: none;
+        font-size: 16px;
+        font-weight: 900;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.6rem;
+      }
+
+      .button:hover {
+        cursor: pointer;
+      }
+
+      .button_primary {
+        background: var(--primary-color_1);
+        color: var(--white-color_1);
+      }
+
+      .button_primary:hover {
+        background: var(--primary-color_2);
+      }
+
+      .button_secondary {
+        color: var(--primary-color_2);
+      }
+
+      .button_secondary:hover {
+        background-color: var(--gray-color_2);
+      }
+
+      .icon {
+        fill: var(--primary-color_2);
+        font-size: 22px;
+      }
+
+      .icon_secondary {
+        fill: var(--white-color_3);
+      }
+
+      .icon_medium {
+        font-size: 16px;
+      }
+    </style>
   </head>
   <body>
     <main>
@@ -13,22 +253,24 @@
           <div class="search-box">
             <div class="search-box__form">
               <div class="search-box__zipcode-label">Postal code</div>
-              <input type="text" class="search-box__zipcode-input" />
+              <div class="search-box__options">
+                <input type="text" class="search-box__zipcode-input" />
+                <button class="button button_secondary">
+                  <svg
+                    class="icon icon_primary"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="1em"
+                    viewBox="0 0 384 512"
+                  >
+                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                      d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"
+                    />
+                  </svg>
+                  <span>Use my location</span>
+                </button>
+              </div>
             </div>
-            <button class="button button_seconday">
-              <svg
-                class="icon icon_primary"
-                xmlns="http://www.w3.org/2000/svg"
-                height="1em"
-                viewBox="0 0 384 512"
-              >
-                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                  d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"
-                />
-              </svg>
-              <span>Use my location</span>
-            </button>
           </div>
         </div>
 
@@ -57,7 +299,7 @@
           <li class="store-item">
             <div class="store">
               <div class="store__title">POIVestkanten</div>
-              <div class="tag tag_closed">OPEN</div>
+              <div class="tag tag_opened">OPEN</div>
               <div class="store__address">Strandagaten 55-57, 6007 Bergen</div>
               <div class="store__date-container">
                 <svg
@@ -77,7 +319,10 @@
           </li>
         </ul>
 
-        <button id="view-all-btn" class="store-card__view-all-btn">
+        <button
+          id="view-all-btn"
+          class="store-card__view-all-btn button button_primary"
+        >
           View all
         </button>
       </div>
