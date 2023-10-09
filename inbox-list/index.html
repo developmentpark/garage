@@ -50,6 +50,7 @@
       .notification-button:hover {
         cursor: pointer;
         background-color: var(--gray-color-3);
+        position: relative;
       }
 
       .notification-button__icon-container {
@@ -57,6 +58,24 @@
         display: flex;
         flex-direction: column;
         width: fit-content;
+        position: relative;
+        animation-name: bounce;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes bounce {
+        0% {
+          top: -8px;
+        }
+        40% {
+          top: 0px;
+        }
+        80%,
+        100% {
+          top: -8px;
+        }
       }
 
       .notification-button__tag {
@@ -101,7 +120,7 @@
         flex-direction: column;
         gap: 0.3rem;
         padding: 0.8rem;
-        border-radius: 10%;
+        border-radius: 10px;
       }
 
       .notification-item {
@@ -112,6 +131,12 @@
         gap: 0.8rem;
         position: relative;
         padding: 1.8rem;
+        transition: transform 200ms ease-in;
+      }
+
+      .notification-item:hover {
+        cursor: pointer;
+        transform: scale(1.05);
       }
 
       .notification-item_selected {
