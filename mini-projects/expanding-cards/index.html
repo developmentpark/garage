@@ -105,5 +105,16 @@
         </div>
       </div>
     </main>
+    <script>
+      const cards = document.querySelectorAll(".card");
+
+      document.addEventListener("click", (ev) => {
+        const card = ev.target.closest(".card");
+        if (card) {
+          cards.forEach((c) => c.classList.remove("card_selected"));
+          card.classList.add("card_selected");
+        }
+      });
+    </script>
   </body>
 </html>
