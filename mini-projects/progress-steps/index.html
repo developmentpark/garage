@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --primary-color_1: rgb(39, 199, 228);
+        --primary-color_2: rgb(29, 182, 209);
+        --secondary-color: rgb(134, 129, 129);
+        --white-color: rgb(238, 238, 238);
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100vh;
+      }
+
+      main {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .steps-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+      }
+      .button {
+        border: none;
+        background-color: var(--primary-color_1);
+        color: var(--white-color);
+        font-size: 14px;
+        border-radius: 10px;
+        width: 100px;
+        height: 28px;
+      }
+
+      .button:hover {
+        cursor: pointer;
+        background-color: var(--primary-color_2);
+      }
+
+      .button:disabled {
+        background-color: var(--secondary-color);
+      }
+
+      .sequence {
+        display: flex;
+        align-items: center;
+      }
+
+      .arco {
+        border-top: solid 3px var(--secondary-color);
+        height: 0;
+        width: 60px;
+        position: relative;
+      }
+
+      .arco__sider {
+        border-top: solid 3px var(--primary-color_1);
+        width: 0px;
+        height: 0;
+        position: absolute;
+        top: -3px;
+        transition: width 200ms ease-out;
+      }
+
+      .arco.current .arco__sider {
+        width: 100%;
+      }
+
+      .node {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        border: solid 3px var(--secondary-color);
+      }
+
+      .node.current {
+        border-color: var(--primary-color_1);
+        transition: border-color 200ms 200ms ease-out;
+      }
+
+      .node__value {
+        font-size: 14px;
+        color: var(--secondary-color);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="steps-container">
+        <div class="sequence">
+          <div class="node current">
+            <div class="node__value">1</div>
+          </div>
+          <div class="arco">
+            <div class="arco__sider"></div>
+          </div>
+          <div class="node">
+            <div class="node__value">2</div>
+          </div>
+          <div class="arco">
+            <div class="arco__sider"></div>
+          </div>
+          <div class="node">
+            <div class="node__value">3</div>
+          </div>
+          <div class="arco">
+            <div class="arco__sider"></div>
+          </div>
+          <div class="node">
+            <div class="node__value">4</div>
+          </div>
+        </div>
+        <div class="steps-controller">
+          <button id="prev-btn" class="button" disabled>Prev</button>
+          <button id="next-btn" class="button">Next</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
