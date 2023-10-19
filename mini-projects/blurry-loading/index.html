@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --gray-color_1: #333333;
+        --gray-color_2: #181818;
+        --white-color: #f0f0f0;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100vh;
+        background-color: var(--gray-color_1);
+      }
+
+      main {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: blur(20px);
+        transition: filter 2000ms linear;
+      }
+
+      .card.blurry .card__image {
+        filter: blur(0);
+      }
+
+      .counter {
+        position: absolute;
+        top: 50%;
+        left: calc(50% - 16px);
+        font-size: 32px;
+        font-weight: 900;
+        color: var(--white-color);
+        text-shadow: 0 2px var(--gray-color_1);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="card">
+        <img
+          class="card__image"
+          src="https://lh3.googleusercontent.com/pw/ADCreHck8hbuneotKTLcvChgR41gLo5ZvxdWbgRZ8WX7_xFqpg3MtuP_x5fZaGGyLVxHFXdpVxegGsPxTwBIgykFJ-_6f21YEdiR7UI85R866xIPP6FRw6o42LzjZ8qZSxVPuwebeXsYt47Jmd8GFg4Jh0Y=w800-h528-s-no"
+          alt=""
+        />
+        <p class="counter"></p>
+      </div>
+    </main>
+    <script>
+      const cardEl = document.querySelector(".card");
+      const counterEl = document.querySelector(".counter");
+
+      let counter = 100;
+      function count() {
+        setTimeout(() => {
+          counter--;
+          counterEl.textContent = `${counter}%`;
+          if (counter > 0) {
+            count();
+          }
+        }, 20);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        count();
+        cardEl.classList.add("blurry");
+      });
+    </script>
+  </body>
+</html>
