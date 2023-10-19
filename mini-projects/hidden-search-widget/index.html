@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+    <style>
+      :root {
+        --gray-color_1: #333333;
+        --gray-color_2: #181818;
+        --white-color: #f0f0f0;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100vh;
+        background-color: var(--gray-color_1);
+      }
+
+      main {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .search-container {
+        display: flex;
+        height: fit-content;
+        box-shadow: 0px 2px 10px -2px var(--gray-color_2);
+      }
+
+      .button {
+        border-radius: 0;
+        border: none;
+        font-size: 16px;
+        font-weight: 600;
+        width: 40px;
+        height: 40px;
+        background-color: var(--white-color);
+      }
+
+      .button:hover {
+        cursor: pointer;
+      }
+
+      .input {
+        background-color: var(--white-color);
+        border: none;
+        padding: 0.6rem;
+        font-size: 14px;
+        width: 200px;
+      }
+
+      .scale-anim {
+        transition: width 200ms ease;
+      }
+
+      .input:focus {
+        outline: none;
+      }
+
+      .input.hidden {
+        width: 0px;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="search-container">
+        <input
+          id="search-input"
+          class="input hidden scale-anim"
+          type="text"
+          placeholder="Search..."
+        />
+        <button id="search-btn" class="button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </main>
+    <script>
+      const searchBtn = document.querySelector("#search-btn");
+      const searchInput = document.querySelector("#search-input");
+      searchBtn.addEventListener("click", () => {
+        searchInput.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
