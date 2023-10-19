@@ -71,25 +71,7 @@
         <p class="counter"></p>
       </div>
     </main>
-    <script>
-      const cardEl = document.querySelector(".card");
-      const counterEl = document.querySelector(".counter");
-
-      let counter = 100;
-      function count() {
-        setTimeout(() => {
-          counter--;
-          counterEl.textContent = `${counter}%`;
-          if (counter > 0) {
-            count();
-          }
-        }, 20);
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        count();
-        cardEl.classList.add("blurry");
-      });
-    </script>
+    <script src="./utils.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>
