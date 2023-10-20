@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --gray-color_1: #333333;
+        --gray-color_2: #181818;
+        --primary-color: #440875;
+        --primary-color_2: #3e0869;
+        --white-color: #f0f0f0;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100vh;
+        background-color: var(--gray-color_1);
+        user-select: none;
+      }
+
+      main {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .box {
+        width: 100px;
+        height: 60px;
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 1px 1px 10px -2px var(--gray-color_2);
+        transition: transform 100ms ease-out;
+      }
+
+      .box:hover {
+        transform: scale(0.98);
+        background-color: var(--primary-color_2);
+        box-shadow: 1px 1px 6px -2px var(--gray-color_2);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div id="applause" class="box">applause</div>
+      <div id="boo" class="box">boo</div>
+      <div id="gasp" class="box">gasp</div>
+      <div id="tada" class="box">tada</div>
+      <div id="victory" class="box">victory</div>
+      <div id="wrong" class="box">wrong</div>
+      <audio>
+        Your browser does not support the <code>audio</code> element.
+      </audio>
+    </main>
+    <script>
+      function play(id) {
+        const audio = document.querySelector("audio");
+        audio.src = `./sounds/${id}.mp3`;
+        audio.play();
+      }
+      document.addEventListener("click", (ev) => {
+        if (ev.target.matches(".box")) {
+          play(ev.target.id);
+        }
+      });
+    </script>
+  </body>
+</html>
