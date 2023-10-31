@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind:wght@300;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --white-color: #fff;
+        --gray-color_1: #141938;
+        --gray-color_2: #1f2757;
+        --gray-color_3: #333852;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--gray-color_2);
+        font-family: "Hind", sans-serif;
+      }
+      .button {
+        border: none;
+        border-radius: 10px;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 1px 1px 10px -1px var(--gray-color_1);
+      }
+
+      .button:hover {
+        cursor: pointer;
+        filter: brightness(0.8);
+        transform: scale(0.95);
+        box-shadow: 1px 1px 4px -1px var(--gray-color_1);
+      }
+
+      .login {
+        background-image: url("https://th.bing.com/th/id/OIP.R87--9L8bexlIjNRH7y_sgHaFs?pid=ImgDet&w=650&h=500&rs=1");
+        background-position: top;
+        background-size: cover;
+        color: var(--white-color);
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .subscribe {
+        background-image: url("https://th.bing.com/th/id/R.6f2c725f3470489e2f4af3a99ebabc22?rik=dT%2bhZAfJGMObdA&riu=http%3a%2f%2fclipart-library.com%2fimages_k%2fhalloween-png-transparent%2fhalloween-png-transparent-1.png&ehk=w2bRF5uCrl%2bH0Ra8gF58JiQPLR5KVT2chkM9YI0lzzw%3d&risl=&pid=ImgRaw&r=0");
+        background-position: center;
+        background-size: top;
+        color: var(--gray-color_1);
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .posts-list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .post:not(:last-child) {
+        border-bottom: solid 1px var(--gray-color_3);
+      }
+
+      .post__image {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        object-position: top;
+        box-shadow: 1px 1px 10px -1px var(--gray-color_1);
+      }
+
+      .post__title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--white-color);
+        padding: 1rem 0;
+        line-height: 24px;
+      }
+
+      main {
+        margin: 2rem auto;
+        width: fit-content;
+        display: flex;
+        gap: 1rem;
+      }
+
+      aside {
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      article {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 400px;
+      }
+
+      .card {
+        box-shadow: 1px 1px 10px -1px var(--gray-color_1);
+        border-radius: 10px;
+      }
+
+      .card__header {
+        height: 300px;
+        border-radius: 10px 10px 0 0;
+      }
+
+      .card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 10px 10px 0 0;
+      }
+      .card__body {
+        background-color: var(--white-color);
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 0 0 10px 10px;
+        background-image: url("https://static.vecteezy.com/system/resources/thumbnails/024/042/272/small_2x/cute-halloween-ghost-with-transparent-background-png.png");
+        background-size: 20%;
+        background-repeat: no-repeat;
+        background-position: right;
+      }
+
+      .card__content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .card__title {
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 600;
+      }
+
+      .card__author {
+        font-size: 14px;
+        color: var(--gray-color_3);
+      }
+
+      .card__date {
+        color: var(--gray-color_2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card__day {
+        font-size: 42px;
+        font-weight: 600;
+        line-height: 1;
+      }
+
+      .card__month {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1;
+      }
+
+      .button.categories {
+        background-image: url("https://th.bing.com/th/id/R.dd36d78005862be73dbd991cee11f803?rik=terBDTzOZxbXWg&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fu8vPRDf.jpg&ehk=ZGizgeO5mfpRSAZJuLlYoZ7Ippn7LHK%2bKpk%2fFE%2bFm5U%3d&risl=&pid=ImgRaw&r=0");
+        background-position: center;
+        background-size: cover;
+        color: var(--white-color);
+        font-size: 14px;
+        font-weight: 900;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <aside>
+        <button class="button login">LOG IN</button>
+        <button class="button subscribe">SUBSCRIBE</button>
+        <div class="posts-list">
+          <div class="post">
+            <img
+              class="post__image"
+              src="https://allpropertyservices.com/wp-content/uploads/halloween-house-decoration.jpg"
+            />
+            <div class="post__title">Decorate your home for Hallowen</div>
+          </div>
+          <div class="post">
+            <img
+              class="post__image"
+              src="https://www.uniqueideas.site/wp-content/uploads/extraordinary-infant-cat-then-hat-costume-along-with-hat-costume-cat.jpg"
+            />
+            <div class="post__title">DIY Hallowen costomes</div>
+          </div>
+        </div>
+      </aside>
+      <article>
+        <div class="card">
+          <div class="card__header">
+            <img
+              class="card__image"
+              src="https://th.bing.com/th/id/OIF.yYIWzdzHdOo4OGi9P9jFbg?pid=ImgDet&rs=1"
+            />
+          </div>
+          <div class="card__body">
+            <div class="card__date">
+              <div class="card__day">31</div>
+              <div class="card__month">Oct</div>
+            </div>
+            <div class="card__content">
+              <div class="card__title">
+                THE 5 BEST MOVIES TO WATCH ON HALLOWEN
+              </div>
+              <div class="card__author">by Nora Johnson</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="button categories">CATEGORIES</button>
+      </article>
+    </main>
+  </body>
+</html>
