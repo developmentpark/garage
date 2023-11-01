@@ -27,6 +27,8 @@
         align-items: center;
         justify-content: center;
         background-color: var(--blue-color_2);
+        flex-direction: column;
+        gap: 1.6rem;
       }
       .glass_size_xl {
         width: 90px;
@@ -36,6 +38,7 @@
         color: var(--white-color);
         display: flex;
         flex-direction: column;
+        overflow: hidden;
       }
       .glass_size_sm {
         width: 30px;
@@ -68,11 +71,13 @@
       }
 
       .remained {
-        flex: 1;
+        height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-color: var(--white-color);
+        color: var(--blue-color_3);
       }
       .remained__value {
         font-size: 14px;
@@ -84,23 +89,23 @@
       .consumed {
         border-radius: 0 0 30px 30px;
         width: 100%;
-        height: 80%; /* VARIABLE */
+        height: 0%; /* VARIABLE */
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: var(--blue-color_1);
-        font-size: 18px;
-        font-weight: 600;
+        font-size: 22px;
+        font-weight: 900;
       }
 
       .title {
         color: var(--white-color);
       }
 
-      main {
-        display: flex;
-        flex-direction: column;
-        gap: 1.6rem;
+      .glass_size_sm.selected {
+        background-color: var(--white-color);
+        color: var(--blue-color_3);
+        pointer-events: none;
       }
     </style>
   </head>
@@ -122,18 +127,38 @@
           Select how many glasses of water that you drak
         </p>
         <div class="row">
-          <div class="glass_size_sm">250ml</div>
-          <div class="glass_size_sm">250ml</div>
-          <div class="glass_size_sm">250ml</div>
-          <div class="glass_size_sm">250ml</div>
+          <div id="0" class="glass_size_sm">250ml</div>
+          <div id="1" class="glass_size_sm">250ml</div>
+          <div id="2" class="glass_size_sm">250ml</div>
+          <div id="3" class="glass_size_sm">250ml</div>
         </div>
         <div class="row">
-          <div class="glass_size_sm">250ml</div>
-          <div class="glass_size_sm">250ml</div>
-          <div class="glass_size_sm">250ml</div>
-          <div class="glass_size_sm">250ml</div>
+          <div id="4" class="glass_size_sm">250ml</div>
+          <div id="5" class="glass_size_sm">250ml</div>
+          <div id="6" class="glass_size_sm">250ml</div>
+          <div id="7" class="glass_size_sm">250ml</div>
         </div>
       </div>
     </main>
+    <script>
+      const remainedEl = document.querySelector(".remained");
+      const remainedValueEl = document.querySelector(".remained__value");
+      const consumedEl = document.querySelector(".consumed");
+      const smallGlassesEls = document.querySelectorAll(".glass_size_sm");
+      document.addEventListener("click", (ev) => {
+        if (ev.target.matches(".glass_size_sm")) {
+          const selecteds = Array.from(smallGlassesEls).filter(
+            (smallGlassEl) => smallGlassEl.id <= ev.target.id
+          );
+          selecteds.forEach((selected) => selected.classList.add("selected"));
+          consumedPercentage = ((parseInt(ev.target.id) + 1) / 8) * 100;
+          remainedPercentage = 100 - consumedPercentage;
+          consumedEl.textContent = `${consumedPercentage}%`;
+          consumedEl.style.height = `${consumedPercentage}%`;
+          remainedValueEl.textContent = `${remainedPercentage}%`;
+          remainedEl.style.height = `${remainedPercentage}%`;
+        }
+      });
+    </script>
   </body>
 </html>
