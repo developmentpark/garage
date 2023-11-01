@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --blue-color_1: rgb(34, 174, 255);
+        --blue-color_2: rgb(0, 140, 221);
+        --blue-color_3: rgb(0, 104, 165);
+        --white-color: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      main {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--blue-color_2);
+      }
+      .glass_size_xl {
+        width: 90px;
+        height: 200px;
+        border: solid 2px var(--blue-color_3);
+        border-radius: 0 0 30px 30px;
+        color: var(--white-color);
+        display: flex;
+        flex-direction: column;
+      }
+      .glass_size_sm {
+        width: 30px;
+        height: 60px;
+        border: solid 2px var(--blue-color_3);
+        border-radius: 0 0 10px 10px;
+        background-color: var(--blue-color_1);
+        color: var(--white-color);
+        font-size: 12px;
+        overflow-wrap: break-word;
+        text-align: center;
+        padding-top: 1rem;
+      }
+      .glass_size_sm:hover {
+        cursor: pointer;
+      }
+      .row {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .column {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .instructions {
+        color: var(--white-color);
+      }
+
+      .remained {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .remained__value {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .remained__description {
+        font-size: 10px;
+      }
+      .consumed {
+        border-radius: 0 0 30px 30px;
+        width: 100%;
+        height: 80%; /* VARIABLE */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--blue-color_1);
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .title {
+        color: var(--white-color);
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="column">
+        <h1 class="title">Drink Water</h1>
+        <p class="instructions">Goal: 2 Liters</p>
+      </div>
+      <div class="glass_size_xl">
+        <div class="remained">
+          <div class="remained__value">1.75L</div>
+          <div class="remained__description">Remained</div>
+        </div>
+        <div class="consumed">12.5%</div>
+      </div>
+      <div class="column">
+        <p class="instructions">
+          Select how many glasses of water that you drak
+        </p>
+        <div class="row">
+          <div class="glass_size_sm">250ml</div>
+          <div class="glass_size_sm">250ml</div>
+          <div class="glass_size_sm">250ml</div>
+          <div class="glass_size_sm">250ml</div>
+        </div>
+        <div class="row">
+          <div class="glass_size_sm">250ml</div>
+          <div class="glass_size_sm">250ml</div>
+          <div class="glass_size_sm">250ml</div>
+          <div class="glass_size_sm">250ml</div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
