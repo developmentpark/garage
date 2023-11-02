@@ -44,7 +44,8 @@
         background-color: var(--primary-color_1);
         border-radius: 10px;
       }
-      .choice:hover {
+
+      .choice.choice_interactive:hover {
         cursor: pointer;
         color: var(--white-color);
         background-color: var(--primary-color_2);
@@ -91,6 +92,9 @@
       const choiceContainer = document.querySelector("#choice-container");
       inputEl.addEventListener("keyup", (ev) => {
         if (ev.key === "Enter") {
+          document
+            .querySelectorAll(".choice")
+            .forEach((c) => c.classList.add("choice_interactive"));
           inputEl.value = "";
           return;
         }
