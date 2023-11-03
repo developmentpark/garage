@@ -92,8 +92,30 @@
         <div class="card__joke">
           Ever wondered why bees hum? It's because the don't know the words.
         </div>
-        <button class="button card__next-btn">Get Another Joke</button>
+        <button id="next-btn" class="button card__next-btn">
+          Get Another Joke
+        </button>
       </div>
     </main>
+    <script>
+      async function getJoke() {
+        const API_URL = "https://icanhazdadjoke.com";
+        const options = {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+        };
+        const response = await fetch(API_URL, options);
+        const json = await response.json();
+        console.log(json);
+        return json.joke;
+      }
+
+      const nextBtn = document.querySelector("#next-btn");
+      nextBtn.addEventListener("click", async () => {
+        document.querySelector(".card__joke").textContent = await getJoke();
+      });
+    </script>
   </body>
 </html>
