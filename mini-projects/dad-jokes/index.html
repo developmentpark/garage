@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --white-color: #fff;
+        --gray-color_1: #050138;
+        --gray-color_2: #191b1c;
+        --gray-color_3: #06014c;
+        --gray-color_4: #c3bdb4;
+        --primary-color_1: #4a0074;
+        --primary-color_2: #3d015f;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: var(--gray-color_1);
+      }
+
+      main {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card {
+        background-color: var(--gray-color_2);
+        border-radius: 10px;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        box-shadow: 1px 1px 20px -1px var(--gray-color_1);
+        max-width: 460px;
+      }
+
+      .card__title {
+        color: var(--gray-color_4);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .card__joke {
+        color: var(--white-color);
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .button {
+        border: none;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 0.8rem;
+        border-radius: 10px;
+        box-shadow: 1px 1px 10px -1px var(--gray-color_1);
+        transition: transform 100ms ease-out;
+      }
+
+      .button:hover {
+        transform: scale(0.95);
+        cursor: pointer;
+      }
+
+      .button.card__next-btn {
+        width: 200px;
+        color: var(--white-color);
+        background-color: var(--primary-color_1);
+      }
+
+      .button.card__next-btn:hover {
+        background-color: var(--primary-color_2);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="card">
+        <div class="card__title">Don't Laugh Challenge</div>
+        <div class="card__joke">
+          Ever wondered why bees hum? It's because the don't know the words.
+        </div>
+        <button class="button card__next-btn">Get Another Joke</button>
+      </div>
+    </main>
+  </body>
+</html>
