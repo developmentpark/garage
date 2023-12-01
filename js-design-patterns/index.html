@@ -20,6 +20,7 @@
         --gray-color_4: rgb(153, 153, 153);
         --black-color: rgb(10, 10, 10);
         --white-color: rgb(245, 245, 245);
+        --orange-color: #fa512f;
       }
 
       body {
@@ -135,7 +136,7 @@
       .item:hover {
         cursor: pointer;
         background-color: var(--gray-color_1);
-        color: #fa502f;
+        color: var(--orange-color);
       }
     </style>
   </head>
@@ -176,24 +177,51 @@
     </main>
 
     <script>
-      const cats = [
-        {
-          name: "Kity",
-          images: [
-            "https://lh3.googleusercontent.com/pw/ADCreHdeBHt3u9L3xt8aYTuXhbr-mE-sR9TxzjCEhic1raqoK_I3ibJ1nNAWEvHRC5ZJhQ7QaDYxNSopH9qmgm_VFjh9KIi4p4rtg3mmIQCTzdPlG0wqtfwGJ50lB3gVl9s_dxD8796IQ2GkHG5-AIUZwGTilhdP0oDVPpfjb_5uQxpjeK67MqrB3oTLNugHHhPb66a69MppT_Q_ElveRJJmqCxYnhT9JGI3V0V7uWsnQgX2yNGTDjUQLwYJyXO2Cdc1l60TQ4u5Mx0pWgXWCT1wAwVwKBORJmYmHJYPxN96IHJfssrO99lnqxGM2N7NKmsZKc3K-szLPc4FEAwf_f1TSg267CnFv0ElK3e7NDpxLZdjSuBYY8T6goATTFPFlv2TlzKRb9rWEuYKP8fh9gRE73yJMNTAbigzNz-EDNF0tZUxnIa08RkumqsblL9Q_GGeeQ3X_u_x-NNAqkHLUWvznCELxcBEkltfrmofm_ErhKeE0lR5iBDNgmvOIKYzXfCI1FDA1IBZvX_RDY8mqJQMpo20oDHovphz_wiZ08l0D1WOio2oa7k6OaLAV1qrJYqxTuE0_cuisxTKt0ZejTZ2I-sQkQ64XMTf4xlSpxTMYuBjBHM3pXXF3CzmXC_y3AqSmfDbVWE5-ZwHoMO4kSZ6czjm60jB0XavpEfg2DIFpBHWQA-HOSIXHjfG2SWAfIcYaipC0GmL0y6R_wivDunHwJnu6xCPkiX8ZFcf3yejpM-AZ0Vu262fF0Z5Jvn08DVwli5JfQu97Lnv3nOrOxAZT9UFbmBjOAJqB1i5sXRLAlZQ3MjCbh80RYcCrkhTwnhugKstx6LN3xByfhn24drlXKoPTI90iLY6-dlSfzzI99JaEQgJ6WuyFBCQahFvNxNocSFuNFp4nuCVUqk5Dp-BDnpTwjpr-okflIlKlZhibA=w800-h532-s-no?authuser=2",
-            "https://lh3.googleusercontent.com/pw/ADCreHcb5XGdxSQKs1PLcUwrHEOjAE5ksFfrsVNE0H2aeJR81aGphdyEKtQ8fkeUr92ixGJsFu3hPpKgLPKUi_FvUNAqCEZ6G284XXKKrA6fRZ6qN4XYEqZOsWivdAapd4FCI9yvnHm4u0xwgFfTr4JmAy6Q1nCeNQw1Ne2tul6mWhyOP7iDFgDIPVtOcV1TB8rBnsUCgmEbsBnvSlg5J4tvC6LoEhu16hmwQXRn-eVRkNZ_mmhyIjIGz1YLreTfQWpYLyi77qsH3vS4hnB2by3HQIw2qTTxVrB4g8T9wOfbiXgjIU2zpfL7R0DJU02gk-By-Jy1UBOE23D7NmJqvs3YDLTVgT1T1797JOokgtuYGv79FmiEhW0bkQgvpNDnlzKwhs1nJIX04ftAzJwfAGi54XgUphbiHiFxbz-y5mqtKEX2h9wdJv8-7Ok7TIF7EurSURaGbyQyceS8-8-h6PNPMry5AJvU436mDM0To2TSK0AJVupztFSkQ52J7bj9yVMJ-RZt4zW1GbiRORIknCvd75xMOh7wFkP-u2FTKmUGFjSGzkdfNhfBFG8qYRC04KcajQbSz6IxuAND6R3gVLW8wdb62kPXNJxqgRxXIrn_EIDTZpmY7hbd1YxisegENdJnn6AOuKKSTwvOltLnbSTfyC4ZiOTQR2jcBgrvZxyKmSjt4VMTb-mfktbAtCxiAEvTt0L9IN-MzOd0rPyELLzdlfaszdggFsP8BVgzTt15AK06f-FL9ZFRXlOOQ0EYyCyvcOK5hh2zstZdjGKSvOpQc9e4bkVBTaCyq92Qz_FXzDMxbvTGp6tmyeFG3yplYh6bfgR8kxfjbBf8GU0-kWbzqzlF6YtH3NWlEcJokEToS_5Eac3RawXGj1fP-7n_LOl_a-jKlp9fT9d_ey0F-OaQrhZPORmItwL7LjQ-b2uD7g=w800-h532-s-no?authuser=2",
-          ],
-          count: 0,
-        },
-        {
-          name: "Fluffy",
-          images: [
-            "https://lh3.googleusercontent.com/pw/ADCreHcm7twY4qkAAqTL4OSgOjmIC85mCncWP7GYUBtpX6vRcjqAnGxWOVOMTLr1RV1uFwks3amkr2SdNw4EzSE_3ttcQHQXNA86sTaJBa2bVrbB_BybPkNFN_WQzVpwooLs5J901nnwZYsJpBtVQtl5UoU=w800-h533-s-no?authuser=0",
-            "https://lh3.googleusercontent.com/pw/ADCreHfq_edAmcxrrHs9ni64_o_vHWGeTfvF1PvSjuyUCwd9bjsvayRgVIe7pTu6hGGcDBENCAdnfWE1ce4dtEOpP1H6r2Us1zD_QnDQ3s_pXnlNoucKRQT-0LTxiOzKfXKYKI-448_Bszz1fklc2UBDopw=w800-h533-s-no?authuser=0",
-          ],
-          count: 0,
-        },
-      ];
+      const data = {
+        cats: [
+          {
+            name: "Kity",
+            images: [
+              "https://lh3.googleusercontent.com/pw/ADCreHdeBHt3u9L3xt8aYTuXhbr-mE-sR9TxzjCEhic1raqoK_I3ibJ1nNAWEvHRC5ZJhQ7QaDYxNSopH9qmgm_VFjh9KIi4p4rtg3mmIQCTzdPlG0wqtfwGJ50lB3gVl9s_dxD8796IQ2GkHG5-AIUZwGTilhdP0oDVPpfjb_5uQxpjeK67MqrB3oTLNugHHhPb66a69MppT_Q_ElveRJJmqCxYnhT9JGI3V0V7uWsnQgX2yNGTDjUQLwYJyXO2Cdc1l60TQ4u5Mx0pWgXWCT1wAwVwKBORJmYmHJYPxN96IHJfssrO99lnqxGM2N7NKmsZKc3K-szLPc4FEAwf_f1TSg267CnFv0ElK3e7NDpxLZdjSuBYY8T6goATTFPFlv2TlzKRb9rWEuYKP8fh9gRE73yJMNTAbigzNz-EDNF0tZUxnIa08RkumqsblL9Q_GGeeQ3X_u_x-NNAqkHLUWvznCELxcBEkltfrmofm_ErhKeE0lR5iBDNgmvOIKYzXfCI1FDA1IBZvX_RDY8mqJQMpo20oDHovphz_wiZ08l0D1WOio2oa7k6OaLAV1qrJYqxTuE0_cuisxTKt0ZejTZ2I-sQkQ64XMTf4xlSpxTMYuBjBHM3pXXF3CzmXC_y3AqSmfDbVWE5-ZwHoMO4kSZ6czjm60jB0XavpEfg2DIFpBHWQA-HOSIXHjfG2SWAfIcYaipC0GmL0y6R_wivDunHwJnu6xCPkiX8ZFcf3yejpM-AZ0Vu262fF0Z5Jvn08DVwli5JfQu97Lnv3nOrOxAZT9UFbmBjOAJqB1i5sXRLAlZQ3MjCbh80RYcCrkhTwnhugKstx6LN3xByfhn24drlXKoPTI90iLY6-dlSfzzI99JaEQgJ6WuyFBCQahFvNxNocSFuNFp4nuCVUqk5Dp-BDnpTwjpr-okflIlKlZhibA=w800-h532-s-no?authuser=2",
+              "https://lh3.googleusercontent.com/pw/ADCreHcb5XGdxSQKs1PLcUwrHEOjAE5ksFfrsVNE0H2aeJR81aGphdyEKtQ8fkeUr92ixGJsFu3hPpKgLPKUi_FvUNAqCEZ6G284XXKKrA6fRZ6qN4XYEqZOsWivdAapd4FCI9yvnHm4u0xwgFfTr4JmAy6Q1nCeNQw1Ne2tul6mWhyOP7iDFgDIPVtOcV1TB8rBnsUCgmEbsBnvSlg5J4tvC6LoEhu16hmwQXRn-eVRkNZ_mmhyIjIGz1YLreTfQWpYLyi77qsH3vS4hnB2by3HQIw2qTTxVrB4g8T9wOfbiXgjIU2zpfL7R0DJU02gk-By-Jy1UBOE23D7NmJqvs3YDLTVgT1T1797JOokgtuYGv79FmiEhW0bkQgvpNDnlzKwhs1nJIX04ftAzJwfAGi54XgUphbiHiFxbz-y5mqtKEX2h9wdJv8-7Ok7TIF7EurSURaGbyQyceS8-8-h6PNPMry5AJvU436mDM0To2TSK0AJVupztFSkQ52J7bj9yVMJ-RZt4zW1GbiRORIknCvd75xMOh7wFkP-u2FTKmUGFjSGzkdfNhfBFG8qYRC04KcajQbSz6IxuAND6R3gVLW8wdb62kPXNJxqgRxXIrn_EIDTZpmY7hbd1YxisegENdJnn6AOuKKSTwvOltLnbSTfyC4ZiOTQR2jcBgrvZxyKmSjt4VMTb-mfktbAtCxiAEvTt0L9IN-MzOd0rPyELLzdlfaszdggFsP8BVgzTt15AK06f-FL9ZFRXlOOQ0EYyCyvcOK5hh2zstZdjGKSvOpQc9e4bkVBTaCyq92Qz_FXzDMxbvTGp6tmyeFG3yplYh6bfgR8kxfjbBf8GU0-kWbzqzlF6YtH3NWlEcJokEToS_5Eac3RawXGj1fP-7n_LOl_a-jKlp9fT9d_ey0F-OaQrhZPORmItwL7LjQ-b2uD7g=w800-h532-s-no?authuser=2",
+            ],
+            count: 0,
+          },
+          {
+            name: "Fluffy",
+            images: [
+              "https://lh3.googleusercontent.com/pw/ADCreHcm7twY4qkAAqTL4OSgOjmIC85mCncWP7GYUBtpX6vRcjqAnGxWOVOMTLr1RV1uFwks3amkr2SdNw4EzSE_3ttcQHQXNA86sTaJBa2bVrbB_BybPkNFN_WQzVpwooLs5J901nnwZYsJpBtVQtl5UoU=w800-h533-s-no?authuser=0",
+              "https://lh3.googleusercontent.com/pw/ADCreHfq_edAmcxrrHs9ni64_o_vHWGeTfvF1PvSjuyUCwd9bjsvayRgVIe7pTu6hGGcDBENCAdnfWE1ce4dtEOpP1H6r2Us1zD_QnDQ3s_pXnlNoucKRQT-0LTxiOzKfXKYKI-448_Bszz1fklc2UBDopw=w800-h533-s-no?authuser=0",
+            ],
+            count: 0,
+          },
+          {
+            name: "Flynn",
+            images: [
+              "https://lh3.googleusercontent.com/pw/ADCreHe-h-RBtwo-UGt-c_Xa1LnQmIZXdzn4jH8ZYgC496YubuTvRtuOyRUvaYdOySLsjxrSl2GLfzjp-1vYUTs6XH61SEVTjjk2BnYgjAS8qD56mcIy0gY9cyker3XbKge3KS-LNrTubXQFtD60G1o7W1Ll=w434-h651-s-no?authuser=0",
+              "https://lh3.googleusercontent.com/pw/ADCreHfITwn1QrwAWN7o6CrcKRzKYnPyQZCg_5NVNgI_qd8zJ_MFWvXaaAt3jLOTCFEHYKlPBzbFSfgj1YgWv5KGz4807eTChRvPDEjXgf_LUuxhPGaZxDEAlK4h-msphENtj2-9I-fNPxNQIzX0T2snAjFR=w885-h651-s-no?authuser=0",
+            ],
+            count: 0,
+          },
+          {
+            name: "Ivy",
+            images: [
+              "https://lh3.googleusercontent.com/pw/ADCreHeL3rfwfAEtnSUOTtNIGADBCGuiWx_98TusPgC8iWdAqrQsy3Jz2CnN5o3cTVt-HeStPvxxKshLYPIPV1wJTc_3isxfPYybDzu0HMbob_AKfB2-7vTXe1Qdf3f9k2QvKphc8lReOFd8osYayAZVQDCW=w800-h533-s-no?authuser=0",
+              "https://lh3.googleusercontent.com/pw/ADCreHfbF5iol0ADl3vGynY4CZToi6U8QJEUdXMNICbUqGCBRxTPruHKQrJHAqHkPBrtJyqT7eXtfpQOnca4juTXgkvCxsauoMIbh7wIrAaDslgxDwN0oqbnTqHuyG32b02XlvS7KFWBssz3dyks23wRCN5G=w800-h533-s-no?authuser=0",
+            ],
+            count: 0,
+          },
+          {
+            name: "Salem",
+            images: [
+              "https://lh3.googleusercontent.com/pw/ADCreHfNNnC3dOPlXEuyjJ3rf_9Nq7u_lLdQxgRczf7pnfBF3dSI_p4B2CH1rr_ASlVoh-Tiu3YuY6iRVbMxf3i0C1doRapCHus_uLSDLoByKtcLQParH_6YBI5j2U1GSusHdly3x21QAh3ZuMaLA3YOpNDO=w800-h533-s-no?authuser=0",
+              "https://lh3.googleusercontent.com/pw/ADCreHc6jtOaNmZjWX5IYvcefVna2gcm3r0VZfM_9XYEAlFLJ_BUwMpBdpw5gUFVMum8SAIMIus3-Y2GtRSI5fNiGvJHdFSk_l_GQ-hxPojQ1h60Xf1Bjg0t9DLRb91rzDm9q6vtgtaUbsOackNO_5ErgAD4=w800-h533-s-no?authuser=0",
+            ],
+            count: 0,
+          },
+        ],
+        selected: 0,
+      };
 
       function interchangeImages(imageEls) {
         imageEls.forEach((el) => {
@@ -201,11 +229,20 @@
         });
       }
 
+      function counterView(counter) {
+        return `
+            <div class="counter">
+            <span class="counter__value">${counter}</span><span>clicks</span>
+            </div>
+        `;
+      }
+
       function catView(cat) {
         return `
-        <div class="box" id="cat-${cat.id}">
-          <div class="box__title">${cat.name}</div>
-          <div class="box__picture" data-id="${cat.id}">
+        <div class="box">
+        <div class="box__title">${cat.name}</div>
+        <div class="box__content">
+            <div class="box__picture" onclick="increase()">
             <img
               class="image"
               src="${cat.images[0]}"
@@ -214,44 +251,59 @@
               class="image hidden"
               src="${cat.images[1]}"
             />
-          </div>
-          <div class="counter">
-            <span class="counter__value">${cat.count}</span><span>clicks</span>
-          </div>
+            </div>
+            ${counterView(cat.count)}
+        </div>
         </div>
         `;
       }
 
-      function indexView(data) {
-        return data.map((cat, id) => catView({ id, ...cat })).join("");
+      function select(id) {
+        data.selected = id;
+        document.querySelector(".container").innerHTML = catView(data.cats[id]);
+      }
+
+      function count(id) {
+        return ++data.cats[id].count;
+      }
+
+      function increase() {
+        document.querySelector(".counter").innerHTML = counterView(
+          count(data.selected)
+        );
+        const imageEls = document.querySelectorAll(`.image`);
+        interchangeImages(imageEls);
+        setTimeout(() => {
+          interchangeImages(imageEls);
+        }, 200);
+      }
+
+      function indexView({ cats, selected }) {
+        const list = cats.map((item, id) => {
+          return `<li id="${id}" class="item" onclick="select(id)"><div>${item.name}</div></li>`;
+        });
+
+        return `
+        <main class="main">
+            <aside class="aside">
+                <ul class="list">
+                    ${list.join("")}
+                </ul>
+            </aside>
+            <div class="container">
+                ${catView(cats[selected])}
+            </div>
+            </main>
+        `;
       }
 
       function render(view, data) {
-        document.querySelector(".container").innerHTML = view(data);
+        document.querySelector(".main").innerHTML = view(data);
       }
 
-      function increase(id) {
-        cats[id].count++;
-      }
-
-      document.addEventListener("click", (ev) => {
-        if (ev.target.matches(".box__picture")) {
-          const id = ev.target.dataset.id;
-          increase(id);
-
-          render(indexView, cats);
-
-          const imageEls = document.querySelectorAll(`#cat-${id} .image`);
-          interchangeImages(imageEls);
-          setTimeout(() => {
-            interchangeImages(imageEls);
-          }, 100);
-        }
+      document.addEventListener("DOMContentLoaded", () => {
+        render(indexView, data);
       });
-
-      /* document.addEventListener("DOMContentLoaded", () => {
-        render(indexView, cats);
-      }); */
     </script>
   </body>
 </html>
