@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .main {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .image {
+        max-width: 400px;
+        height: 400px;
+        object-fit: cover;
+        object-position: center;
+      }
+      .image.hidden {
+        display: none;
+      }
+      .image:hover {
+        cursor: pointer;
+      }
+
+      .counter {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        display: flex;
+        gap: 4px;
+        align-items: baseline;
+      }
+
+      .counter__value {
+        font-size: 40px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main">
+      <div class="container">
+        <img
+          class="image"
+          id="miao"
+          src="https://lh3.googleusercontent.com/pw/ADCreHcm7twY4qkAAqTL4OSgOjmIC85mCncWP7GYUBtpX6vRcjqAnGxWOVOMTLr1RV1uFwks3amkr2SdNw4EzSE_3ttcQHQXNA86sTaJBa2bVrbB_BybPkNFN_WQzVpwooLs5J901nnwZYsJpBtVQtl5UoU=w800-h533-s-no?authuser=0"
+        />
+        <img
+          class="image hidden"
+          id="grrr"
+          src="https://lh3.googleusercontent.com/pw/ADCreHfq_edAmcxrrHs9ni64_o_vHWGeTfvF1PvSjuyUCwd9bjsvayRgVIe7pTu6hGGcDBENCAdnfWE1ce4dtEOpP1H6r2Us1zD_QnDQ3s_pXnlNoucKRQT-0LTxiOzKfXKYKI-448_Bszz1fklc2UBDopw=w800-h533-s-no?authuser=0"
+        />
+
+        <div class="counter">
+          <span class="counter__value">0</span><span>clicks</span>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const count = (function () {
+        let counter = 0;
+        return () => ++counter;
+      })();
+
+      function interchangeImages(imageEls) {
+        imageEls.forEach((el) => {
+          el.classList.toggle("hidden");
+        });
+      }
+
+      document.addEventListener("click", (ev) => {
+        if (ev.target.matches(".image")) {
+          const imageEls = document.querySelectorAll(".image");
+          interchangeImages(imageEls);
+          setTimeout(() => {
+            interchangeImages(imageEls);
+          }, 200);
+          document.querySelector(".counter__value").textContent = count();
+        }
+      });
+    </script>
+  </body>
+</html>
