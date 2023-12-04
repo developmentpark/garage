@@ -92,7 +92,7 @@ print(letters) #['a', 'b', 'c', 'd', 'z']
 
 ## Tuples
 
-- immutable ordered sequences of elements.
+- **immutable** **ordered** sequences of elements.
 - can be accessed by their indices.
 - you can't add and remove items from tuples, or sort them in place.
 
@@ -171,3 +171,35 @@ n = elements.get("dilithium")
 print(n is None)#True
 print(n is not None)#False
 ```
+
+## Compound Data Structures
+
+containers in other containers to create compound data structures.
+we can think about it as a **collection**
+
+```python
+elements = {"hydrogen": {"number": 1,
+                         "weight": 1.00794,
+                         "symbol": "H"},
+              "helium": {"number": 2,
+                         "weight": 4.002602,
+                         "symbol": "He"}}
+
+helium = elements["helium"]  # get the helium dictionary
+hydrogen_weight = elements["hydrogen"]["weight"]  # get hydrogen's weight
+
+oxygen = {"number":8,"weight":15.999,"symbol":"O"}  # create a new oxygen dictionary
+elements["oxygen"] = oxygen  # assign 'oxygen' as a key to the elements dictionary
+
+
+sorted(iterable)
+#receives an iterable as an argument
+#returns a new ordered list without modifying the original.
+
+list.sort()#modifies the existing list and returns None
+```
+
+![](./ds.png)
+\*create an empty dictionary
+set() create an empty set
+\*\* A dictionary itself is mutable, but each of its individual keys must be immutable.
