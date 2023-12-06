@@ -47,7 +47,6 @@ const data = {
 const controller = {
   init: function () {
     indexView.init();
-    indexView.render();
   },
   getCats: function () {
     return [...data.cats];
@@ -62,7 +61,6 @@ const controller = {
   increaseCounter: function () {
     data.cats[data.currentId].count++;
     counterView.render();
-    viewerView.animation();
   },
 };
 
@@ -73,37 +71,35 @@ const counterView = {
   render: function () {
     const cat = controller.getCurrentCat();
     this.root.innerHTML = `
-        <div class="counter">
-        <span class="counter__value">${cat.count}</span><span>clicks</span>
-        </div>`;
+        <span class="counter__value">${cat.count}</span><span>clicks</span>`;
   },
 };
 
 const viewerView = {
   init: function () {
     this.title = document.querySelector(".box__title");
-    this.pictureEl = document.querySelector(`.box__picture`);
+    this.pictureEl = document.querySelector(".box__picture");
 
-    counterView.init();
-  },
-  animation: function () {
-    const interchangeImages = (imageEls) => {
-      imageEls.forEach((el) => {
-        el.classList.toggle("hidden");
-      });
-    };
+    this.pictureEl.addEventListener("click", () => {
+      controller.increaseCounter();
+      const interchangeImages = (imageEls) => {
+        imageEls.forEach((el) => {
+          el.classList.toggle("hidden");
+        });
+      };
 
-    const imageEls = document.querySelectorAll(`.image`);
-    interchangeImages(imageEls);
-    setTimeout(() => {
+      const imageEls = document.querySelectorAll(`.image`);
       interchangeImages(imageEls);
-    }, 200);
+      setTimeout(() => {
+        interchangeImages(imageEls);
+      }, 200);
+    });
+    counterView.init();
   },
   render: function () {
     const cat = controller.getCurrentCat();
     this.title.textContent = cat.name;
     this.pictureEl.innerHTML = `
-        <div class="box__picture" onclick="controller.increaseCounter()">
         <img
         class="image"
         src="${cat.images[0]}"
@@ -111,8 +107,8 @@ const viewerView = {
         <img
         class="image hidden"
         src="${cat.images[1]}"
-        />
-        </div>`;
+        />`;
+
     counterView.render();
   },
 };
@@ -126,10 +122,7 @@ const listView = {
     const items = cats.map((item, id) => {
       return `<li id="${id}" class="item" onclick="controller.selectCat(id)"><div>${item.name}</div></li>`;
     });
-    this.root.innerHTML = `
-        <ul class="list">
-            ${items.join("")}
-        </ul>`;
+    this.root.innerHTML = `${items.join("")}`;
   },
 };
 
@@ -137,6 +130,7 @@ const indexView = {
   init: function () {
     listView.init();
     viewerView.init();
+    this.render();
   },
 
   render: function () {
