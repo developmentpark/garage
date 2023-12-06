@@ -42,6 +42,7 @@ const data = {
     },
   ],
   currentId: 0,
+  isAdminPanelOpened: false,
 };
 
 const controller = {
@@ -62,6 +63,25 @@ const controller = {
     data.cats[data.currentId].count++;
     counterView.render();
   },
+  openAdminPanel: function () {
+    data.isAdminPanelOpened = true;
+    indexView.render();
+  },
+  closeAdminPanel: function () {
+    data.isAdminPanelOpened = false;
+    indexView.render();
+  },
+  isAdminPanelOpened: function () {
+    return data.isAdminPanelOpened == true;
+  },
+  save: function () {
+    const form = adminPanelView.getForm();
+    data.cats[data.currentId].name = form.catName;
+    data.cats[data.currentId].images[0] = form.imageUrl[0];
+    data.cats[data.currentId].images[1] = form.imageUrl[1];
+    data.cats[data.currentId].count = form.clicks;
+    this.closeAdminPanel();
+  },
 };
 
 const counterView = {
@@ -79,6 +99,11 @@ const viewerView = {
   init: function () {
     this.title = document.querySelector(".box__title");
     this.pictureEl = document.querySelector(".box__picture");
+    this.adminBtn = document.querySelector("#admin-btn");
+
+    this.adminBtn.addEventListener("click", () => {
+      controller.openAdminPanel();
+    });
 
     this.pictureEl.addEventListener("click", () => {
       controller.increaseCounter();
@@ -130,12 +155,101 @@ const indexView = {
   init: function () {
     listView.init();
     viewerView.init();
+    adminPanelView.init();
     this.render();
   },
 
   render: function () {
+    adminPanelView.render();
     listView.render();
     viewerView.render();
+  },
+};
+
+const adminPanelView = {
+  init: function () {
+    this.root = document.querySelector(".modal");
+  },
+  getForm: function () {
+    const catName = document.querySelector("#admin-panel__name").value;
+    const imageUrl0 = document.querySelector("#admin-panel__url-0").value;
+    const imageUrl1 = document.querySelector("#admin-panel__url-1").value;
+    const clicks = document.querySelector("#admin-panel__clicks").value;
+    return {
+      catName,
+      imageUrl: [imageUrl0, imageUrl1],
+      clicks,
+    };
+  },
+  render: function () {
+    const isAdminPanelOpened = controller.isAdminPanelOpened();
+    if (!isAdminPanelOpened) {
+      this.root.innerHTML = "";
+      return;
+    }
+    const cat = controller.getCurrentCat();
+    this.root.innerHTML = `
+        <div class="umbrella">
+        <div class="admin-panel">
+        <div class="admin-panel__field-container">
+            <div class="admin-panel__field">
+            <label for="admin-panel__name">Name</label>
+            <input
+                id="admin-panel__name"
+                class="input"
+                type="text"
+                placeholder="Enter cat name"
+                value="${cat.name}"
+            />
+            </div>
+            <div class="admin-panel__field">
+            <label for="admin-panel__url-0">ImgURL#1</label>
+            <input
+                id="admin-panel__url-0"
+                class="input"
+                type="text"
+                placeholder="Enter URL image"
+                value="${cat.images[0]}"
+            />
+            </div>
+            <div class="admin-panel__field">
+            <label for="admin-panel__url-1">ImgURL#2</label>
+            <input
+                id="admin-panel__url-1"
+                class="input"
+                type="text"
+                placeholder="Enter URL image"
+                value="${cat.images[1]}"
+            />
+            </div>
+            <div class="admin-panel__field">
+            <label for="admin-panel__clicks">#Clicks</label>
+            <input
+                id="admin-panel__clicks"
+                class="input"
+                type="number"
+                min="0"
+                max="9999999"
+                value="${cat.count}"
+            />
+            </div>
+        </div>
+        <div class="admin-panel__button-container">
+            <button id="cancel-btn" class="button button_secondary" onclick="controller.closeAdminPanel()">
+            Cancel
+            </button>
+            <button id="save-btn" class="button" onclick="controller.save()">Save</button>
+        </div>
+        </div>
+    </div>
+    `;
+
+    const umbrella = document.querySelector(".umbrella");
+    umbrella.addEventListener("click", (ev) => {
+      if (ev.target == umbrella) {
+        controller.closeAdminPanel();
+      }
+    });
   },
 };
 
