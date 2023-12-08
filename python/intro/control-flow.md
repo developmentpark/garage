@@ -130,3 +130,55 @@ hand = []
 while sum(hand)  < 17:
     hand.append(card_deck.pop())
 ```
+
+- hash() construye la identidad de un objeto.
+  En Python, todos los valores son objetos: int float
+
+## Zip
+
+creates an iterable of tuples that combine several iterables, each tuple is formed with the elements of the iterables in the same position.
+
+```python
+letters = ['a', 'b', 'c']
+nums = [1, 2, 3]
+
+for letter, num in zip(letters, nums):
+    print("{}: {}".format(letter, num))
+#[('a', 1), ('b', 2), ('c', 3)]
+
+#unzip
+some_list = [('a', 1), ('b', 2), ('c', 3)]
+letters, nums = zip(*some_list)
+```
+
+## Enumerate
+
+crea un iterable de tuplas (index, value)
+
+```python
+letters = ['a', 'b', 'c', 'd', 'e']
+for i, letter in enumerate(letters):
+    print(i, letter)
+#0 a
+#1 b
+#2 c
+#3 d
+#4 e
+```
+
+## List Comprehensions
+
+create lists really quickly and concisely
+
+```python
+capitalized_cities = [city.title() for city in cities]
+```
+
+### Conditionals in List Comprehensions
+
+```python
+squares = [x**2 for x in range(9) if x % 2 == 0]
+
+#If you would like to add else
+squares = [x**2 if x % 2 == 0 else x + 3 for x in range(9)]
+```
