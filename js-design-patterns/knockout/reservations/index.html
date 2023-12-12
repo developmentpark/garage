@@ -32,6 +32,7 @@
         </tr>
       </tbody>
       <button data-bind="click: addSeat">add seat</button>
+      <h3 data-bind="text: totalSurcharge"></h3>
     </table>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"
@@ -78,6 +79,10 @@
         self.removeSeat = function (seat) {
           self.seats.remove(seat);
         };
+
+        self.totalSurcharge = ko.computed(function () {
+          return self.seats().reduce((acc, curr) => acc + curr.meal().price, 0);
+        });
       }
 
       ko.applyBindings(new ReservationsViewModel());
