@@ -31,7 +31,9 @@
           <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
         </tr>
       </tbody>
-      <button data-bind="click: addSeat">add seat</button>
+      <button data-bind="click: addSeat, enable: $root.seats().length < 5">
+        add seat
+      </button>
       <h3 data-bind="text: totalSurcharge"></h3>
     </table>
     <script
