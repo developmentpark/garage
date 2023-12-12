@@ -28,6 +28,7 @@
           </td>
           <td data-bind="text: meal().price"></td>
           <td data-bind="text: formattedPrice"></td>
+          <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
         </tr>
       </tbody>
       <button data-bind="click: addSeat">add seat</button>
@@ -72,6 +73,10 @@
 
         self.addSeat = function () {
           self.seats.push(new SeatReservation("", self.availableMeals[0]));
+        };
+
+        self.removeSeat = function (seat) {
+          self.seats.remove(seat);
         };
       }
 
