@@ -73,7 +73,9 @@
       <aside class="aside">
         <ul class="list" data-bind="foreach: catList">
           <li class="item" data-bind="click: $root.selectCat">
-            <div data-bind="text: name"></div>
+            <div
+              data-bind="text: name, css: { highlight : $root.currentCat().name == name}"
+            ></div>
           </li>
         </ul>
       </aside>

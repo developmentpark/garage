@@ -229,6 +229,10 @@ body {
   border-radius: 8px;
 }
 
+.highlight {
+  color: var(--orange-color);
+}
+
 .item:hover {
   cursor: pointer;
   background-color: var(--gray-color_1);
