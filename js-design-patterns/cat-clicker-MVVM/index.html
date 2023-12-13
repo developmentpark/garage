@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Cat Clicker</title>
+  </head>
+  <body>
+    <main class="main">
+      <!-- MODAL -->
+      <div class="modal" data-bind="visible: isAdminPanelOpened">
+        <div class="umbrella" data-bind="click: closeAdminPanel"></div>
+        <div class="admin-panel">
+          <div class="admin-panel__field-container">
+            <div class="admin-panel__field">
+              <label for="admin-panel__name">Name</label>
+              <input
+                id="admin-panel__name"
+                class="input"
+                type="text"
+                placeholder="Enter cat name"
+                data-bind="value: temporaryCat().name"
+              />
+            </div>
+            <div class="admin-panel__field">
+              <label for="admin-panel__url-0">ImgURL#1</label>
+              <input
+                id="admin-panel__url-0"
+                class="input"
+                type="text"
+                placeholder="Enter URL image"
+                data-bind="value: temporaryCat().images()[0]"
+              />
+            </div>
+            <div class="admin-panel__field">
+              <label for="admin-panel__url-1">ImgURL#2</label>
+              <input
+                id="admin-panel__url-1"
+                class="input"
+                type="text"
+                placeholder="Enter URL image"
+                data-bind="value: temporaryCat().images()[1]"
+              />
+            </div>
+            <div class="admin-panel__field">
+              <label for="admin-panel__clicks">#Clicks</label>
+              <input
+                id="admin-panel__clicks"
+                class="input"
+                type="number"
+                min="0"
+                max="9999999"
+                data-bind="value: temporaryCat().count"
+              />
+            </div>
+          </div>
+          <div class="admin-panel__button-container">
+            <button
+              id="cancel-btn"
+              class="button button_secondary"
+              data-bind="click: closeAdminPanel"
+            >
+              Cancel
+            </button>
+            <button id="save-btn" class="button" data-bind="click: save">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- FIN-MODAL -->
+      <aside class="aside">
+        <ul class="list" data-bind="foreach: catList">
+          <li class="item" data-bind="click: $root.selectCat">
+            <div data-bind="text: name"></div>
+          </li>
+        </ul>
+      </aside>
+      <div class="container">
+        <div class="col">
+          <div class="box">
+            <div class="box__title" data-bind="text: currentCat().name"></div>
+            <div class="box__content">
+              <div class="box__picture" data-bind="click: increaseCounter">
+                <img
+                  class="image"
+                  data-bind="attr: {src: currentCat().images()[0]}"
+                />
+                <img
+                  class="image hidden"
+                  data-bind="attr: {src: currentCat().images()[1]}"
+                />
+              </div>
+              <div class="counter">
+                <span
+                  class="counter__value"
+                  data-bind="text: currentCat().count"
+                ></span
+                ><span>clicks</span>
+              </div>
+            </div>
+          </div>
+          <button
+            id="admin-btn"
+            class="button"
+            data-bind="click: openAdminPanel"
+          >
+            Admin
+          </button>
+        </div>
+      </div>
+    </main>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"
+      integrity="sha512-2AL/VEauKkZqQU9BHgnv48OhXcJPx9vdzxN1JrKDVc4FPU/MEE/BZ6d9l0mP7VmvLsjtYwqiYQpDskK9dG8KBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
