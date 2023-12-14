@@ -40,3 +40,6 @@ for name, assignment, grade in zip(names, assignments, grades):
   **KeyError**, key can't be found in a dictionary
 
   **TypeError**, unsupported type is passed as input
+
+- **TypeError** occurs when an **operation that is not valid for the data type** is performed.
+- **ValueError** occurs when an argument with an **incorrect value** is passed to a
