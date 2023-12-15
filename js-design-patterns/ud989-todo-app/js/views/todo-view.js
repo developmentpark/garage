@@ -18,6 +18,7 @@ var app = app || {};
     // The DOM events specific to an item.
     events: {
       "click .toggle": "toggleCompleted",
+      "click .priority-btn": "togglePrioritized",
       "dblclick label": "edit",
       "click .destroy": "clear",
       "click .edit-btn": "edit",
@@ -50,7 +51,9 @@ var app = app || {};
       }
 
       this.$el.html(this.template(this.model.toJSON()));
+
       this.$el.toggleClass("completed", this.model.get("completed"));
+      this.$el.toggleClass("priority", this.model.get("prioritized"));
       this.toggleVisible();
       this.$input = this.$(".edit");
       return this;
@@ -66,9 +69,15 @@ var app = app || {};
         : app.TodoFilter === "completed";
     },
 
+    togglePrioritized: function () {
+      this.model.togglePrioritize();
+      console.log("Prioritized");
+    },
+
     // Toggle the `"completed"` state of the model.
     toggleCompleted: function () {
       this.model.toggle();
+      console.log("Completed");
     },
 
     // Switch this view into `"editing"` mode, displaying the input field.
