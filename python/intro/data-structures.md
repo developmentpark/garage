@@ -162,9 +162,9 @@ print(elements.get("dilithium"))#None
 
 ## Identity Operators
 
-**==** compara que los valores sean iguales.
+**==** compares that the values are equal.
 
-**is** compara que la identidad sea la misma (misma direccion)
+**is** compares that the identity is the same (same address)
 
 ```python
 n = elements.get("dilithium")

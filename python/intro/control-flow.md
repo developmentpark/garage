@@ -131,8 +131,8 @@ while sum(hand)  < 17:
     hand.append(card_deck.pop())
 ```
 
-- hash() construye la identidad de un objeto.
-  En Python, todos los valores son objetos: int float
+- hash() constructs the identity of an object.
+  In Python, all values are objects: int float
 
 ## Zip
 
@@ -153,7 +153,7 @@ letters, nums = zip(*some_list)
 
 ## Enumerate
 
-crea un iterable de tuplas (index, value)
+create an iterable of tuples(index, value)
 
 ```python
 letters = ['a', 'b', 'c', 'd', 'e']
